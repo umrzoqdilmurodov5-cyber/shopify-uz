@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shopify — online do‘kon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f3f1f8;--sf:#fff;--tx:#1b1530;--mu:#6e6a80;--pr:#7000ff;--pr2:#f0e6ff;--ac:#ff3b6b;--ok:#13a05a;--bd:#e4e0ee}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#14111f;--sf:#201b31;--tx:#f1eeff;--mu:#a39fb8;--pr:#9a55ff;--pr2:#2e2347;--bd:#352d4d}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#14111f;--sf:#201b31;--tx:#f1eeff;--mu:#a39fb8;--pr:#9a55ff;--pr2:#2e2347;--bd:#352d4d}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 15px/1.45 Manrope,system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--pr);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 14px}
+header{background:var(--sf);position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:1px solid var(--bd)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--sf);z-index:30}
+.bar{display:flex;gap:12px;align-items:center;padding:10px 0}
+.logo{font-weight:800;font-size:24px;color:var(--pr);letter-spacing:-.5px;cursor:pointer;white-space:nowrap}
+.search{flex:1;display:flex;border:2px solid var(--pr);border-radius:10px;overflow:hidden;background:var(--sf)}
+.search input{flex:1;border:0;padding:10px 14px;background:transparent;min-width:0;outline:0}
+.search button{border:0;background:var(--pr);color:#fff;padding:0 18px;font-weight:600}
+.nav{display:flex;gap:6px}
+.nb{background:none;border:0;padding:6px 10px;border-radius:10px;font-weight:600;position:relative}
+.nb:hover{background:var(--pr2)}
+.badge{position:absolute;top:-2px;right:0;background:var(--ac);color:#fff;border-radius:99px;font-size:11px;min-width:18px;height:18px;display:grid;place-items:center}
+.cats{display:flex;gap:8px;overflow-x:auto;padding:10px 0 12px;scrollbar-width:none}
+.chip{border:1px solid var(--bd);background:var(--sf);padding:7px 14px;border-radius:99px;white-space:nowrap;font-weight:600}
+.chip.on{background:var(--pr);border-color:var(--pr);color:#fff}
+.hero{margin:16px 0;border-radius:18px;padding:34px 28px;color:#fff;background:linear-gradient(120deg,#5200c9,#9b3dff 60%,#ff5ea8);display:flex;justify-content:space-between;align-items:center;gap:16px;overflow:hidden}
+.hero h1{margin:0 0 8px;font-size:clamp(22px,4vw,38px);line-height:1.1}
+.hero p{margin:0 0 16px;opacity:.9}
+.hero .big{font-size:84px}
+.btn{border:0;background:var(--pr);color:#fff;padding:11px 20px;border-radius:10px;font-weight:700}
+.btn.w{background:#fff;color:var(--pr)}
+.btn.g{background:var(--pr2);color:var(--pr)}
+.btn.d{background:#ffe3ea;color:#c41848}
+.btn.sm{padding:6px 12px;font-size:13px}
+h2{font-size:22px;margin:22px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.card{background:var(--sf);border-radius:14px;overflow:hidden;border:1px solid var(--bd);display:flex;flex-direction:column;cursor:pointer;position:relative}
+.card:hover{border-color:var(--pr)}
+.pic{aspect-ratio:1;display:grid;place-items:center;font-size:76px;background:var(--pr2);overflow:hidden}
+.pic img{width:100%;height:100%;object-fit:cover}
+.fav{position:absolute;top:8px;right:8px;background:var(--sf);border:0;border-radius:50%;width:34px;height:34px;font-size:17px}
+.disc{position:absolute;top:8px;left:8px;background:var(--ac);color:#fff;border-radius:8px;padding:2px 8px;font-size:12px;font-weight:800}
+.cb{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.nm{font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:40px}
+.rt{color:var(--mu);font-size:12px}
+.pr{font-weight:800;font-size:17px}
+.old{color:var(--mu);text-decoration:line-through;font-size:13px;margin-left:6px;font-weight:400}
+.inst{background:#fff3b0;color:#4a3d00;border-radius:6px;padding:2px 6px;font-size:12px;font-weight:700;align-self:flex-start}
+.card .btn{margin-top:auto;width:100%}
+.ov{position:fixed;inset:0;background:rgba(10,5,25,.55);z-index:50;display:flex;justify-content:flex-end;align-items:center;justify-content:center;padding:14px}
+.modal{background:var(--sf);border-radius:18px;max-width:760px;width:100%;max-height:90vh;overflow:auto;padding:20px;position:relative}
+.modal.side{margin-left:auto;max-width:440px;align-self:stretch;max-height:none}
+.x{position:absolute;top:10px;right:12px;border:0;background:var(--pr2);border-radius:50%;width:34px;height:34px;font-size:18px}
+.det{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.det .pic{border-radius:14px;font-size:120px}
+@media(max-width:640px){.det{grid-template-columns:1fr}.hero .big{display:none}.nb span{display:none}.logo{font-size:20px}}
+.row{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd)}
+.row .th{width:54px;height:54px;border-radius:10px;background:var(--pr2);display:grid;place-items:center;font-size:30px;overflow:hidden;flex:none}
+.row .th img{width:100%;height:100%;object-fit:cover}
+.row .in{flex:1;min-width:0}
+.q{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--bd);border-radius:8px}
+.q button{border:0;background:none;width:30px;height:30px;font-size:17px}
+label{display:block;font-weight:600;font-size:13px;margin:10px 0 4px}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tot{display:flex;justify-content:space-between;font-weight:800;font-size:18px;margin:14px 0}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 18px;border-radius:10px;z-index:99;font-weight:600}
+footer{margin:40px 0 20px;color:var(--mu);text-align:center;font-size:13px}
+.empty{text-align:center;color:var(--mu);padding:40px 10px}
+/* admin */
+.adm{display:grid;grid-template-columns:200px 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.adm{grid-template-columns:1fr}}
+.side{background:var(--sf);border-radius:14px;padding:10px;border:1px solid var(--bd);align-self:start;display:flex;flex-direction:column;gap:4px}
+.side button{border:0;background:none;text-align:left;padding:10px 12px;border-radius:10px;font-weight:600}
+.side button.on{background:var(--pr);color:#fff}
+@media(max-width:760px){.side{flex-direction:row;overflow-x:auto}}
+.panel{background:var(--sf);border-radius:14px;padding:16px;border:1px solid var(--bd);min-width:0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.st{background:var(--pr2);border-radius:12px;padding:14px}
+.st b{display:block;font-size:24px}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px;border-bottom:1px solid var(--bd);vertical-align:middle}
+.tag{padding:2px 8px;border-radius:99px;font-size:12px;font-weight:700;background:var(--pr2);color:var(--pr)}
+.tag.ok{background:#d9f5e6;color:#0b7a43}
+.login{max-width:340px;margin:60px auto;background:var(--sf);padding:24px;border-radius:16px;border:1px solid var(--bd)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+"use strict";
+const fmt=n=>Number(n).toLocaleString("ru-RU").replace(/\u00a0/g," ")+" so‘m";
+const $=s=>document.querySelector(s);
+const ls={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const CATS=["Elektronika","Kiyim","Maishiy texnika","Go‘zallik","Uy-ro‘zg‘or","Bolalar","Sport"];
+const SEED=[
+{id:1,name:"Smartfon Galaxy X 128GB",cat:"Elektronika",price:3290000,old:3790000,emoji:"📱",stock:25,rating:4.8},
+{id:2,name:"Simsiz quloqchin Pods Pro",cat:"Elektronika",price:289000,old:399000,emoji:"🎧",stock:80,rating:4.6},
+{id:3,name:"Noutbuk 15.6\" 16GB/512GB",cat:"Elektronika",price:7490000,old:8200000,emoji:"💻",stock:9,rating:4.7},
+{id:4,name:"Erkaklar kurtkasi qishki",cat:"Kiyim",price:459000,old:690000,emoji:"🧥",stock:40,rating:4.5},
+{id:5,name:"Sport krossovka Run Max",cat:"Sport",price:349000,old:0,emoji:"👟",stock:60,rating:4.4},
+{id:6,name:"Robot changyutgich",cat:"Maishiy texnika",price:1890000,old:2300000,emoji:"🤖",stock:14,rating:4.7},
+{id:7,name:"Elektr choynak 1.8L",cat:"Maishiy texnika",price:129000,old:0,emoji:"🫖",stock:100,rating:4.3},
+{id:8,name:"Atir Rose 50ml",cat:"Go‘zallik",price:219000,old:290000,emoji:"🌹",stock:35,rating:4.6},
+{id:9,name:"Divan 3 kishilik",cat:"Uy-ro‘zg‘or",price:4150000,old:4900000,emoji:"🛋️",stock:5,rating:4.8},
+{id:10,name:"Bolalar konstruktori 500 detal",cat:"Bolalar",price:179000,old:0,emoji:"🧩",stock:70,rating:4.9},
+{id:11,name:"Yoga gilami",cat:"Sport",price:99000,old:140000,emoji:"🧘",stock:55,rating:4.5},
+{id:12,name:"Aqlli soat Fit 3",cat:"Elektronika",price:420000,old:560000,emoji:"⌚",stock:30,rating:4.4}];
+let S={products:ls.get("sh_products",SEED),orders:ls.get("sh_orders",[]),cart:ls.get("sh_cart",[]),favs:ls.get("sh_favs",[]),
+cat:"Barchasi",q:"",admin:false,tab:"stat",edit:null,modal:null};
+const save=()=>{ls.set("sh_products",S.products);ls.set("sh_orders",S.orders);ls.set("sh_cart",S.cart);ls.set("sh_favs",S.favs)};
+const toast=t=>{const d=document.createElement("div");d.className="toast";d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1800)};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pic=p=>p.img?`<img src="${p.img}" alt="${esc(p.name)}">`:p.emoji||"📦";
+const cartCount=()=>S.cart.reduce((a,c)=>a+c.qty,0);
+const cartTotal=()=>S.cart.reduce((a,c)=>{const p=S.products.find(x=>x.id===c.id);return a+(p?p.price*c.qty:0)},0);
+
+function header(){return `<header><div class="wrap"><div class="bar">
+<div class="logo" onclick="go('')">🛍️ Shopify</div>
+<form class="search" onsubmit="event.preventDefault();S.q=this.q.value;render()"><input name="q" value="${esc(S.q)}" placeholder="Mahsulot, brend yoki toifa qidiring" aria-label="Qidirish"><button>Qidirish</button></form>
+<div class="nav"><button class="nb" onclick="S.cat='Sevimlilar';render()">❤️<span> Sevimlilar</span>${S.favs.length?`<i class="badge">${S.favs.length}</i>`:""}</button>
+<button class="nb" onclick="openCart()">🛒<span> Savat</span>${cartCount()?`<i class="badge">${cartCount()}</i>`:""}</button>
+<button class="nb" onclick="go('admin')">⚙️<span> Admin</span></button></div></div>
+<div class="cats">${["Barchasi",...CATS].map(c=>`<button class="chip ${S.cat===c?"on":""}" onclick="S.cat='${c}';render()">${c}</button>`).join("")}</div></div></header>`}
+
+function card(p){const dc=p.old>p.price?Math.round((1-p.price/p.old)*100):0;
+return `<div class="card" onclick="openProd(${p.id})"><div class="pic">${pic(p)}</div>
+${dc?`<span class="disc">-${dc}%</span>`:""}
+<button class="fav" aria-label="Sevimli" onclick="event.stopPropagation();fav(${p.id})">${S.favs.includes(p.id)?"❤️":"🤍"}</button>
+<div class="cb"><div class="nm">${esc(p.name)}</div><div class="rt">⭐ ${p.rating} · ${p.stock>0?p.stock+" ta bor":"Tugagan"}</div>
+<div><span class="pr">${fmt(p.price)}</span>${p.old>p.price?`<span class="old">${fmt(p.old)}</span>`:""}</div>
+<span class="inst">${fmt(Math.ceil(p.price/12/100)*100)} × 12 oy</span>
+<button class="btn" ${p.stock<1?"disabled":""} onclick="event.stopPropagation();add(${p.id})">Savatga</button></div></div>`}
+
+function shop(){let l=S.products;
+if(S.cat==="Sevimlilar")l=l.filter(p=>S.favs.includes(p.id));else if(S.cat!=="Barchasi")l=l.filter(p=>p.cat===S.cat);
+if(S.q)l=l.filter(p=>(p.name+p.cat).toLowerCase().includes(S.q.toLowerCase()));
+const hero=S.cat==="Barchasi"&&!S.q?`<div class="hero"><div><h1>Katta chegirmalar haftaligi</h1><p>1 000 000+ mahsulot, tez yetkazib berish va 12 oygacha bo‘lib to‘lash.</p><button class="btn w" onclick="S.cat='Elektronika';render()">Xarid qilish</button></div><div class="big">🛍️</div></div>`:"";
+return header()+`<main class="wrap">${hero}<h2>${S.cat==="Barchasi"?"Ommabop mahsulotlar":S.cat}</h2>
+${l.length?`<div class="grid">${l.map(card).join("")}</div>`:`<div class="empty">Hech narsa topilmadi. Boshqa so‘z bilan qidirib ko‘ring.</div>`}</main>
+<footer class="wrap">© 2026 Shopify · Yetkazib berish butun O‘zbekiston bo‘ylab</footer>`}
+
+function fav(id){S.favs=S.favs.includes(id)?S.favs.filter(x=>x!==id):[...S.favs,id];save();render()}
+function add(id){const c=S.cart.find(x=>x.id===id);const p=S.products.find(x=>x.id===id);
+if(c){if(c.qty<p.stock)c.qty++}else S.cart.push({id,qty:1});save();toast("Savatga qo‘shildi");render()}
+function openProd(id){const p=S.products.find(x=>x.id===id);
+S.modal=`<div class="ov" onclick="if(event.target===this)closeM()"><div class="modal"><button class="x" onclick="closeM()" aria-label="Yopish">×</button>
+<div class="det"><div class="pic">${pic(p)}</div><div><h2 style="margin-top:0">${esc(p.name)}</h2><div class="rt">⭐ ${p.rating} · ${esc(p.cat)}</div>
+<div style="margin:12px 0"><span class="pr" style="font-size:26px">${fmt(p.price)}</span>${p.old>p.price?`<span class="old">${fmt(p.old)}</span>`:""}</div>
+<span class="inst">${fmt(Math.ceil(p.price/12/100)*100)} × 12 oy</span>
+<p style="color:var(--mu)">Original mahsulot, 1 yil kafolat. Ertaga yetkazib beramiz. Omborda: ${p.stock} ta.</p>
+<button class="btn" ${p.stock<1?"disabled":""} onclick="add(${p.id});closeM()">Savatga qo‘shish</button></div></div></div></div>`;render()}
+function closeM(){S.modal=null;render()}
+function openCart(){const items=S.cart.map(c=>({c,p:S.products.find(x=>x.id===c.id)})).filter(x=>x.p);
+S.modal=`<div class="ov" onclick="if(event.target===this)closeM()"><div class="modal side"><button class="x" onclick="closeM()" aria-label="Yopish">×</button><h2 style="margin-top:0">Savat</h2>
+${items.length?items.map(({c,p})=>`<div class="row"><div class="th">${pic(p)}</div><div class="in"><div>${esc(p.name)}</div><b>${fmt(p.price*c.qty)}</b></div>
+<div class="q"><button onclick="qty(${p.id},-1)">−</button>${c.qty}<button onclick="qty(${p.id},1)">+</button></div></div>`).join("")+
+`<div class="tot"><span>Jami</span><span>${fmt(cartTotal())}</span></div>
+<label>Ism</label><input id="on" placeholder="Ismingiz"><label>Telefon</label><input id="op" placeholder="+998 90 123 45 67" inputmode="tel"><label>Manzil</label><input id="oa" placeholder="Shahar, ko‘cha, uy">
+<button class="btn" style="width:100%;margin-top:14px" onclick="order()">Buyurtma berish</button>`
+:`<div class="empty">Savat bo‘sh. Mahsulot qo‘shing.</div>`}</div></div>`;render()}
+function qty(id,d){const c=S.cart.find(x=>x.id===id),p=S.products.find(x=>x.id===id);c.qty=Math.min(p.stock,c.qty+d);
+if(c.qty<1)S.cart=S.cart.filter(x=>x.id!==id);save();openCart()}
+function order(){const n=$("#on").value.trim(),ph=$("#op").value.trim(),a=$("#oa").value.trim();
+if(!n||!ph||!a){toast("Ism, telefon va manzilni to‘ldiring");return}
+const items=S.cart.map(c=>{const p=S.products.find(x=>x.id===c.id);return {id:c.id,name:p.name,qty:c.qty,price:p.price}});
+S.cart.forEach(c=>{const p=S.products.find(x=>x.id===c.id);if(p)p.stock-=c.qty});
+S.orders.unshift({id:Date.now()%1000000,items,total:cartTotal(),name:n,phone:ph,addr:a,date:new Date().toLocaleString("ru-RU"),status:"Yangi"});
+S.cart=[];save();S.modal=null;render();toast("Buyurtma qabul qilindi!")}
+
+/* ADMIN */
+function adminView(){
+if(!S.admin)return `<div class="login"><h2 style="margin-top:0">Admin kirish</h2><label>Parol</label><input type="password" id="pw" placeholder="Parol" onkeydown="if(event.key==='Enter')login()">
+<button class="btn" style="width:100%;margin-top:14px" onclick="login()">Kirish</button><p class="rt">Boshlang‘ich parol: admin123</p><button class="btn g" style="width:100%" onclick="go('')">Do‘konga qaytish</button></div>`;
+const rev=S.orders.reduce((a,o)=>a+o.total,0);
+const tabs=[["stat","📊 Statistika"],["prod","📦 Mahsulotlar"],["ord","🧾 Buyurtmalar"]];
+let body="";
+if(S.tab==="stat")body=`<div class="stats"><div class="st">Mahsulotlar<b>${S.products.length}</b></div><div class="st">Buyurtmalar<b>${S.orders.length}</b></div><div class="st">Daromad<b style="font-size:18px">${fmt(rev)}</b></div><div class="st">Omborda<b>${S.products.reduce((a,p)=>a+p.stock,0)}</b></div></div>
+<h2>So‘nggi buyurtmalar</h2>${S.orders.slice(0,5).map(o=>`<div class="row"><div class="in">#${o.id} · ${esc(o.name)}<div class="rt">${o.date}</div></div><b>${fmt(o.total)}</b></div>`).join("")||`<div class="empty">Hali buyurtma yo‘q.</div>`}`;
+if(S.tab==="prod")body=S.edit?editForm():`<button class="btn" onclick="S.edit={id:0,name:'',cat:CATS[0],price:'',old:'',emoji:'📦',stock:10,rating:4.5};render()">+ Yangi mahsulot</button>
+<div class="tw"><table><tr><th></th><th>Nomi</th><th>Narx</th><th>Ombor</th><th></th></tr>${S.products.map(p=>`<tr><td style="font-size:24px;width:40px">${p.img?"🖼️":p.emoji}</td><td>${esc(p.name)}<div class="rt">${p.cat}</div></td><td>${fmt(p.price)}</td><td>${p.stock}</td>
+<td style="white-space:nowrap"><button class="btn g sm" onclick="S.edit={...S.products.find(x=>x.id===${p.id})};render()">Tahrirlash</button> <button class="btn d sm" onclick="delP(${p.id})">O‘chirish</button></td></tr>`).join("")}</table></div>`;
+if(S.tab==="ord")body=S.orders.length?`<div class="tw"><table><tr><th>№</th><th>Mijoz</th><th>Mahsulotlar</th><th>Jami</th><th>Holat</th></tr>${S.orders.map((o,i)=>`<tr><td>#${o.id}<div class="rt">${o.date}</div></td><td>${esc(o.name)}<div class="rt">${esc(o.phone)}<br>${esc(o.addr)}</div></td>
+<td>${o.items.map(i=>esc(i.name)+" × "+i.qty).join("<br>")}</td><td>${fmt(o.total)}</td>
+<td><select onchange="S.orders[${i}].status=this.value;save();render()">${["Yangi","Yo‘lda","Yetkazildi","Bekor qilindi"].map(s=>`<option ${o.status===s?"selected":""}>${s}</option>`).join("")}</select></td></tr>`).join("")}</table></div>`:`<div class="empty">Hali buyurtma yo‘q.</div>`;
+return header()+`<main class="wrap"><div class="adm"><nav class="side">${tabs.map(t=>`<button class="${S.tab===t[0]?"on":""}" onclick="S.tab='${t[0]}';S.edit=null;render()">${t[1]}</button>`).join("")}<button onclick="S.admin=false;render()">🚪 Chiqish</button></nav><section class="panel">${body}</section></div></main>`}
+function editForm(){const e=S.edit;return `<h2 style="margin-top:0">${e.id?"Mahsulotni tahrirlash":"Yangi mahsulot"}</h2>
+<label>Nomi</label><input id="fn" value="${esc(e.name)}">
+<div class="two"><div><label>Toifa</label><select id="fc">${CATS.map(c=>`<option ${e.cat===c?"selected":""}>${c}</option>`).join("")}</select></div><div><label>Emoji</label><input id="fe" value="${esc(e.emoji)}"></div></div>
+<div class="two"><div><label>Narx (so‘m)</label><input id="fp" type="number" value="${e.price}"></div><div><label>Eski narx (ixtiyoriy)</label><input id="fo" type="number" value="${e.old||""}"></div></div>
+<div class="two"><div><label>Ombordagi soni</label><input id="fs" type="number" value="${e.stock}"></div><div><label>Rasm yuklash</label><input id="fi" type="file" accept="image/*" onchange="upl(this)"></div></div>
+<div style="margin-top:16px;display:flex;gap:8px"><button class="btn" onclick="saveP()">Saqlash</button><button class="btn g" onclick="S.edit=null;render()">Bekor qilish</button></div>`}
+function upl(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas"),m=500,k=Math.min(1,m/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext("2d").drawImage(im,0,0,c.width,c.height);S.edit.img=c.toDataURL("image/jpeg",.8);toast("Rasm tayyor")};im.src=r.result};r.readAsDataURL(f)}
+function saveP(){const e=S.edit;e.name=$("#fn").value.trim();e.cat=$("#fc").value;e.emoji=$("#fe").value||"📦";e.price=+$("#fp").value;e.old=+$("#fo").value||0;e.stock=+$("#fs").value;
+if(!e.name||!e.price){toast("Nomi va narxni kiriting");return}
+if(e.id)S.products=S.products.map(p=>p.id===e.id?e:p);else{e.id=Date.now();S.products.unshift(e)}
+save();S.edit=null;render();toast("Saqlandi")}
+function delP(id){if(confirm("Mahsulot o‘chirilsinmi?")){S.products=S.products.filter(p=>p.id!==id);save();render()}}
+function login(){const pw=ls.get("sh_pw","admin123");if($("#pw").value===pw){S.admin=true;render()}else toast("Parol noto‘g‘ri")}
+
+function go(h){location.hash=h}
+function render(){const adm=location.hash==="#admin";$("#app").innerHTML=(adm?adminView():shop())+(S.modal||"");
+if(adm&&!S.admin)document.querySelector(".login")&&0}
+addEventListener("hashchange",()=>{S.modal=null;render()});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&S.modal)closeM()});
+render();
+</script>
+</body>
+</html>
